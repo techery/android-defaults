@@ -1,32 +1,53 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 
-// App version
-def versionMajor = 0
-def versionMinor = 0
-def versionPatch = 1
-def versionBuild = 0 // bump for dogfood builds, public betas, etc.
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
-    archivesBaseName = "TecheryApp"
+    // App version
+    def versionMajor = 0
+    def versionMinor = 0
+    def versionPatch = 1
+    def versionBuild = 0 // bump for dogfood builds, public betas, etc.
 
     defaultConfig {
         applicationId "com.techery.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
 
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        archivesBaseName = "TecheryApp" // apk file name base
+    }
+    signingConfigs {
+        release {
+            Properties signinProperties = new Properties()
+            def pFile = rootProject.file('signing/signing.properties')
+            if (pFile.exists()) {
+                signinProperties.load(new FileInputStream(pFile))
+                storeFile rootProject.file("signing/" + signinProperties.storeFile)
+                storePassword signinProperties.storePassword
+                keyAlias signinProperties.keyAlias
+                keyPassword signinProperties.keyPassword
+            }
+        }
+        debug {
+            // Use same debug certificate within team
+            storeFile rootProject.file("debug.keystore")
+        }
     }
     buildTypes {
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            versionNameSuffix ".${versionBuild}-dev"
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
