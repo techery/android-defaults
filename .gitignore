@@ -24,3 +24,31 @@ proguard/
 
 # Log Files
 *.log
+
+# Archives
+*.gz
+*.tar
+*.zip
+
+# Eclipse
+*.metadata
+*.settings
+
+# Android Studio
+.idea/*
+**/*/.idea
+!.idea/codeStyleSettings.xml
+.gradle
+*/local.properties
+*/out
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
+
+# OS specific
+.DS_Store
+
+# svn
+*.svn*
