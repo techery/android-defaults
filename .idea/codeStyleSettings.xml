@@ -55,17 +55,13 @@
           <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
           <option name="BLANK_LINES_AROUND_METHOD_IN_INTERFACE" value="0" />
           <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
-          <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
           <option name="PREFER_PARAMETERS_WRAP" value="true" />
-          <option name="CALL_PARAMETERS_RPAREN_ON_NEXT_LINE" value="true" />
+          <option name="METHOD_CALL_CHAIN_WRAP" value="5" />
           <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
           <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
           <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
           <option name="METHOD_ANNOTATION_WRAP" value="5" />
           <option name="FIELD_ANNOTATION_WRAP" value="5" />
-          <indentOptions>
-            <option name="CONTINUATION_INDENT_SIZE" value="2" />
-          </indentOptions>
           <arrangement>
             <rules />
           </arrangement>
