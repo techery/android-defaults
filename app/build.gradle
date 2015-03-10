@@ -1,16 +1,25 @@
 apply plugin: 'com.android.application'
 
+// App version
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+def versionBuild = 0 // bump for dogfood builds, public betas, etc.
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+    archivesBaseName = "TecheryApp"
+
     defaultConfig {
         applicationId "com.techery.app"
-        versionCode 1
-        versionName "1.0"
+
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-
     }
     buildTypes {
         release {
