@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.1.0'
+    }
+}
+
+ext {
+    compileSdkVersion = 21
+    buildToolsVersion = '21.1.2'
+    minSdkVersion = 15
+    targetSdkVersion = 21
+}
+
+///////////////////////////////////
+// Misc dependencies and properties
+///////////////////////////////////
+
+// System properties
+ext.preDexLibs = !project.hasProperty('disablePreDex')
