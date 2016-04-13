@@ -1,4 +1,4 @@
-package com.techery.app;
+package io.techery.library;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
